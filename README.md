@@ -108,8 +108,4 @@ The trained model successfully generates images with:
 
     Educational use in medical AI
 
-📬 Contact
 
-For more information or collaboration:
-📧 dragomir.bozoki@example.com
-🌐 LinkedIn
