@@ -3,7 +3,7 @@
 A project focused on generating realistic chest X-ray images using a Generative Adversarial Network (GAN).
 
 Author: Dragomir Božoki
-Year: 2024
+Year: 2025
 Faculty: E1-65
 📌 Project Overview
 
