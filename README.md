@@ -4,7 +4,7 @@ A project focused on generating realistic chest X-ray images using a Generative 
 
 Author: Dragomir Božoki
 Year: 2025
-Faculty: E1-65
+Faculty: FTN Novi Sad
 📌 Project Overview
 
 This project implements a GAN-based model that generates synthetic chest X-ray images. The GAN architecture consists of:
