@@ -95,7 +95,7 @@ This project implements a **Generative Adversarial Network (GAN)** for generatin
 | Epoch 500                | Epoch 3000               |
 |--------------------------|--------------------------|
 | ![<img width="512" height="512" alt="epoch_500_img_1" src="https://github.com/user-attachments/assets/b406a004-bc0b-466e-bfc3-5587b32da93f" />
-]() | ![]()<img width="512" height="512" alt="epoch_3040_img_5" src="https://github.com/user-attachments/assets/a6140547-912f-4e96-b059-3000bb82fc40" />
+]() | ![()<img width="512" height="512" alt="epoch_3040_img_5" src="https://github.com/user-attachments/assets/a6140547-912f-4e96-b059-3000bb82fc40" />]
  |
 
 ---
