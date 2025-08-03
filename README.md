@@ -1,8 +1,4 @@
 
-<img width="512" height="512" alt="epoch_2830_img_4" src="https://github.com/user-attachments/assets/01ea7890-822a-4697-b580-a83f0b1182bd" />
-
-
-
 # 🧠 Chest X-ray Generation using GANs
 
 This project implements a **Generative Adversarial Network (GAN)** for generating realistic chest X-ray images. The goal is to synthetically augment medical imaging datasets, especially when labeled data is limited or expensive to acquire.
