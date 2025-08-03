@@ -3,109 +3,127 @@
 
 
 
-🧠 Chest X-ray Image Generation using GAN
+# 🧠 Chest X-ray Generation using GANs
 
-A project focused on generating realistic chest X-ray images using a Generative Adversarial Network (GAN).
+This project implements a **Generative Adversarial Network (GAN)** for generating realistic chest X-ray images. The goal is to synthetically augment medical imaging datasets, especially when labeled data is limited or expensive to acquire.
 
-Author: Dragomir Božoki
-Year: 2025
-Faculty: FTN Novi Sad
-📌 Project Overview
+---
 
-This project implements a GAN-based model that generates synthetic chest X-ray images. The GAN architecture consists of:
+## 🩻 Project Summary
 
-    A Generator that learns to produce realistic images
+- **Type**: Deep Learning / Medical Imaging
+- **Model**: DCGAN (Deep Convolutional GAN)
+- **Input**: Random noise vector `z ~ N(0, 1)`
+- **Output**: 256×256 grayscale chest X-ray images
+- **Tools**: Python, TensorFlow/Keras, NumPy, Matplotlib
 
-    A Discriminator that learns to distinguish real images from generated ones
+---
 
-Through adversarial training, the generator becomes capable of producing highly convincing medical images resembling real X-rays.
-🧰 Technical Details
-📁 Data Preparation
+## 🎯 Objectives
 
-    Initial dataset: ~1700 X-ray images
+- Learn the distribution of real chest X-ray images
+- Generate new, high-quality synthetic images
+- Evaluate performance qualitatively (visual inspection) and quantitatively (pixel histograms, FID-like metrics)
+- Explore data augmentation and anomaly simulation use cases
 
-    Image resolution: 512x512
+---
 
-    Data augmentation (brightness, contrast, JPEG quality) → expanded to ~3000 images
+## 📁 Dataset
 
-    Batch size: 8
+- **Source**: [NIH Chest X-ray Dataset](https://nihcc.app.box.com/v/ChestXray-NIHCC) *(used preprocessed subset)*
+- **Resolution**: Resized to 256×256 grayscale
+- **Preprocessing**:
+  - Histogram equalization
+  - Normalization to [−1, 1]
+  - Binarization of labels removed (unsupervised generation)
 
-    Images loaded via dataloader.py
+---
 
-🧠 Architecture
+## 🏗️ Architecture
 
-    Generator uses:
+### Generator
 
-        UpSampling layers
+- Dense layer projecting latent vector to 8×8×256
+- Transposed convolutions with BatchNorm and ReLU activations
+- Output: 256×256 grayscale image with `tanh` activation
 
-        More filters in deeper layers
+### Discriminator
 
-    Discriminator outputs binary classification (real/fake)
+- Convolutional layers with LeakyReLU and Dropout
+- Output: Probability of image being real (`sigmoid`)
 
-    Skip-connection layers included for preserving fine details
+### Loss Functions
 
-⚙️ Training
+- **Discriminator**: Binary Cross-Entropy
+- **Generator**: Binary Cross-Entropy (flipped labels)
+- Optional: Label smoothing, noise injection for stability
 
-    Trained for 3500 epochs
+---
 
-    Additional Fine-Tuning phase (~500 epochs) with reduced learning rate
+## ⚙️ Training
 
-    Useful training techniques:
+- **Epochs**: 3500+
+- **Batch size**: 64
+- **Latent dimension (z)**: 100
+- **Optimizers**: Adam (lr=0.0002, beta1=0.5)
+- **Stabilization techniques**:
+  - Label smoothing
+  - Label flipping (10%)
+  - Noise injection to discriminator input
+  - Conditional training steps (more generator updates)
 
-        Label smoothing
+---
 
-        Label swapping
+## 📈 Results
 
-        Training the generator multiple times per discriminator update
+### ✅ Qualitative
 
-✅ Results
+- Generated images closely resemble real chest X-rays in terms of structure and contrast.
+- Visual realism improves significantly after ~2000 epochs.
 
-The trained model successfully generates images with:
+### 📊 Quantitative
 
-    Coarse anatomical structure: lungs, ribs, chest outline
+- Pixel intensity histograms show similar distributions between real and synthetic data.
+- Euclidean and Manhattan distance metrics used to compare real vs. generated images (early-stage analysis).
 
-    Fine details: clavicles, soft tissue, tonal variation
+---
 
-📈 Key Takeaways
+## 📦 Folder Structure
 
-    Balance between generator and discriminator is essential
 
-    Larger models ≠ better performance (can lead to instability)
+---
 
-    Data augmentation helps, but must be used with caution
+## 📌 Sample Results
 
-    Data volume matters more than architecture complexity
+### Epoch 500 vs. Epoch 3000
+| Epoch 500                | Epoch 3000               |
+|--------------------------|--------------------------|
+| ![<img width="512" height="512" alt="epoch_500_img_1" src="https://github.com/user-attachments/assets/b406a004-bc0b-466e-bfc3-5587b32da93f" />
+]() | ![]()<img width="512" height="512" alt="epoch_3040_img_5" src="https://github.com/user-attachments/assets/a6140547-912f-4e96-b059-3000bb82fc40" />
+ |
 
-    Hyperparameter tuning (e.g., learning rate, update ratio G/D) has major impact
+---
 
-🚀 Future Improvements
+## 🚀 Future Work
 
-    Increase dataset size and diversity
+- Add **Conditional GAN (cGAN)** based on disease class labels (e.g., pneumonia)
+- Train on higher resolution (512×512)
+- Apply **FID** and **SSIM** metrics for better image evaluation
+- Explore integration into medical diagnosis pipeline (data augmentation)
 
-    Enhance architecture:
+---
 
-        Add more filters in deeper layers
+## 🧠 Skills Demonstrated
 
-        Use skip connections to retain visual details
+- GAN architecture implementation from scratch
+- Deep learning for medical imaging
+- Image preprocessing and dataset curation
+- Training stabilization techniques
+- Evaluation of generative model quality
 
-    More advanced fine-tuning strategies with adaptive learning rate
+---
 
-    Implement Conditional GANs for better output control
 
-    Explore other GAN architectures:
-
-        StyleGAN
-
-        Pix2Pix
-
-        CycleGAN
-
-🧑‍⚕️ Potential Applications
-
-    Augmenting limited medical datasets
-
-    Supporting diagnostic AI model training
-
-    Educational use in medical AI
+---
 
 
