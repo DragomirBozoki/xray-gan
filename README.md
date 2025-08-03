@@ -59,8 +59,8 @@ This project implements a **Generative Adversarial Network (GAN)** for generatin
 ## ⚙️ Training
 
 - **Epochs**: 3500+
-- **Batch size**: 64
-- **Latent dimension (z)**: 100
+- **Batch size**: 8
+- **Latent dimension (z)**: 256
 - **Optimizers**: Adam (lr=0.0002, beta1=0.5)
 - **Stabilization techniques**:
   - Label smoothing
